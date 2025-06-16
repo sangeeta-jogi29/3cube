@@ -1,0 +1,25 @@
+:focus-visible {
+  outline: 2px solid #b4dbe8;
+  outline-offset: 2px;
+}
+
+.dashed-circle {
+  border: 2px dashed #0a70af;
+  border-radius: 9999px;
+  padding: 12px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

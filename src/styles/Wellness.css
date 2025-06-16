@@ -1,0 +1,33 @@
+.scroll-wrapper {
+  overflow: hidden;
+  height: 30rem;
+  position: relative;
+}
+
+.scroll-content {
+  display: flex;
+  flex-direction: column;
+  animation: autoScrollY 20s linear infinite;
+}
+
+.scroll-wrapper:hover .scroll-content {
+  animation-play-state: paused;
+}
+
+.scroll-card {
+  background-color: white;
+  border: 2px solid #b3d8ef;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 112, 175, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes autoScrollY {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
