@@ -46,7 +46,6 @@ function App() {
       <Route path="/wellness" element={<Wellness/>}/>
       <Route path="/mhealth" element={<MHealth />} />
       <Route path="/contact" element={<Contact />} />
-
     </Routes>
   );
 }
