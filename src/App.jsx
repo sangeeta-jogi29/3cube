@@ -4,7 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import About from './components/About/About';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import contact from './components/Contact';
+import Contact from './components/Contact';
+
 
 import SlideshowSection from './components/landing_page/SlideshowSection';
 import Services from './components/landing_page/Services';
@@ -44,7 +45,8 @@ function App() {
       <Route path="/rma" element={<RMASection />} />
       <Route path="/wellness" element={<Wellness/>}/>
       <Route path="/mhealth" element={<MHealth />} />
-      <Route path="/contact" element={<Contact/>} />
+      <Route path="/contact" element={<Contact />} />
+
     </Routes>
   );
 }
