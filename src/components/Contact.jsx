@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import Header from "./Header";
+import Footer from './Footer';
 const Contact = () => {
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', subject: '', message: ''
@@ -28,6 +29,8 @@ const Contact = () => {
   };
 
   return (
+    <>
+    <Header/>
     <div className="bg-white text-gray-900 font-sans">
       {/* Hero Section */}
       <section className="relative bg-primary-600 text-white py-16 px-6 md:px-16">
@@ -169,7 +172,10 @@ const Contact = () => {
         </div>
       </section>
     </div>
+    <Footer/>
+    </>
   );
+  
 };
 
 export default Contact;
