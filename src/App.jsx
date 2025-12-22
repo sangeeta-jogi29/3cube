@@ -28,10 +28,11 @@ function HomePage() {
       <Header />
       <SlideshowSection />
       <StatsSection />
-      <Services />
-      <ExpertSection />
-      <TestimonialsSection />
       <ClientsSection />
+      <Services />
+      {/* <ExpertSection /> */}
+      <TestimonialsSection />
+      
       <Footer />
     </>
   );
