@@ -2,17 +2,16 @@
   "name": "project1",
   "private": true,
   "homepage": "https://sangeeta-jogi29.github.io/3cube",
-
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "lint": "eslint .",
-  "preview": "vite preview",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-},
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@tailwindcss/vite": "^4.1.8",
@@ -41,5 +40,4 @@
     "tailwindcss": "^4.1.8",
     "vite": "^6.3.5"
   }
-  
 }
