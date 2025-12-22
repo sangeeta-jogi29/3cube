@@ -1,93 +1,63 @@
-import { useState, useEffect } from 'react';
-import frontPage from '../../assets/front_page.png';
-import digital3 from '../../assets/digital3.png';
+ import React from "react";
+
+import seafarerVideo from "../../assets/Seafarer.mp4";
 
 const SlideshowSection = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentPage(prev => (prev === 1 ? 2 : 1));
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section
       id="slideshow-section"
-      className="relative w-full overflow-hidden px-6 py-20 bg-gradient-to-br from-[#e9f3fa] to-white"
+      className="relative w-full h-screen overflow-hidden bg-slate-950"
+      aria-label="Maritime Healthcare Hero Section"
     >
-      {/* Background blob */}
-      <div className="absolute -top-16 -left-16 w-72 h-72 bg-[#0a70af]/10 rounded-full blur-3xl z-0"></div>
+      {/* Background Video */}
+      <video
+        src={seafarerVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-      {/* Slideshow container with fixed height to avoid layout shift */}
-      <div className="relative z-10 max-w-7xl mx-auto min-h-[400px]">
-        {/* Slides container */}
-        <div className="relative w-full h-full">
-          {/* Slide 1 */}
-          <div
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              currentPage === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-            }`}
-          >
-            <div className="grid md:grid-cols-2 gap-12 items-center h-full">
-              <div>
-                <h1 className="font-bold text-[40px] md:text-[48px] font-serif leading-tight tracking-tight">
-                  Exceptional Care for <span className="text-[#0a70af]">Every Crew</span>, Everywhere
-                </h1>
-                <p className="mt-6 text-lg text-black/70 font-normal leading-7 max-w-xl">
-                  At 3Cube Medicare, we go beyond treatment; we deliver trust at sea. With our expert medical team and holistic approach, we address your crew’s health needs with speed, compassion, and precision.
-                </p>
-                <button className="mt-8 inline-flex items-center gap-2 bg-[#0a70af] text-white px-6 py-3 rounded-xl shadow-md hover:bg-[#095e96] transition duration-300">
-                  Learn More
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
-              </div>
-              <div className="flex justify-center items-center">
-                <img
-                  src={frontPage}
-                  alt="Ship showing all services"
-                  className="w-[300px] md:w-[420px] h-[400px] object-cover rounded-xl transition-transform duration-700 hover:scale-105"
-                />
-              </div>
-            </div>
-          </div>
+      {/* Dark Overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/60 to-transparent" />
 
-          {/* Slide 2 */}
-          <div
-            className={`absolute inset-0 transition-opacity duration-800 ${
-              currentPage === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-            }`}
-          >
-            <div className="grid md:grid-cols-2 gap-12 items-center h-full">
-              <div>
-                <h1 className="font-bold text-[36px] md:text-[44px] font-serif leading-tight tracking-tight">
-                  Delivering <span className="text-[#0a70af]">Smart Maritime Healthcare</span> Through Technology
-                </h1>
-                <p className="mt-6 text-lg text-black/70 font-normal leading-7 max-w-xl">
-                  Leveraging the latest in medical and digital technology, 3Cube Medicare ensures your crew receives real-time, high-quality healthcare even in the middle of the ocean.
-                </p>
-                <button className="mt-8 inline-flex items-center gap-2 bg-[#0a70af] text-white px-6 py-3 rounded-xl shadow-md hover:bg-[#095e96] transition duration-300">
-                  Learn More
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
-              </div>
-              <div className="flex justify-center items-center">
-                <img
-                  src={digital3}
-                  alt="Technological Maritime Healthcare"
-                  className="w-[300px] md:w-[460px] h-[440px] object-cover rounded-xl transition-transform duration-700 hover:scale-105"
-                />
-              </div>
-            </div>
+      {/* Decorative Gradient Accent */}
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#0a70af]/20 rounded-full blur-3xl" />
+
+      {/* Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto h-full px-6 lg:px-12 flex items-center animate-fadeIn">
+        <div className="max-w-3xl">
+          <span className="inline-block mb-4 px-4 py-1 rounded-full bg-[#0a70af]/20 text-[#8cc9f2] text-sm font-medium tracking-wide">
+            Maritime Healthcare Excellence
+          </span>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+            Exceptional Care for
+            <span className="block text-[#4fb3ff]">Every Crew, Everywhere</span>
+          </h1>
+
+          <p className="mt-6 text-lg md:text-xl text-slate-200 leading-relaxed">
+            3Cube Medicare provides industry-grade maritime medical solutions,
+            combining global expertise, rapid response, and technology-driven
+            care to protect seafarers across the world’s oceans.
+          </p>
+
+                    <div className="mt-10 flex flex-wrap items-center gap-4">
+            <button className="inline-flex items-center gap-2 rounded-2xl bg-[#0a70af] px-7 py-4 text-white font-semibold shadow-lg hover:bg-[#095e96] hover:shadow-xl transition-all duration-300">
+              Explore Services
+              
+            </button>
+
+            <button className="rounded-2xl border border-white/30 px-7 py-4 text-white font-medium backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+              Contact Us
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Bottom Fade */}
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-slate-950 to-transparent" />
     </section>
   );
 };

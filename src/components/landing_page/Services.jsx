@@ -1,128 +1,166 @@
-import rmaBack from "../../assets/rma_back.png";
-import mHealthBack from "../../assets/MHealth_back.jpg";
-import wellnessBack from "../../assets/wellness_back.jpg";
-import pharmaBack from "../../assets/pharma_back.png";
+import React, { useEffect, useRef } from "react";
+
+import rmaBack from "../../assets/RMA1.jpg";
+import mHealthBack from "../../assets/MH1.jpg";
+import wellnessBack from "../../assets/Well1.jpg";
+import pharmaBack from "../../assets/Phar1.jpg";
 import shorecareBack from "../../assets/shorecare_back.jpg";
-import trainingBack from "../../assets/training_back.jpg";
-import { Link } from 'react-router-dom';
-
-
+import trainingBack from "../../assets/Training1.jpg";
 
 const services = [
   {
-    title: "RMA",
-    icon: "fas fa-briefcase-medical",
-    description: "Remote Medical Assistance with 24/7 expert support.",
+    title: "Remote Medical Assistance",
+    short: "RMA",
+    description:
+      "24/7 access to qualified maritime doctors providing real-time medical guidance, emergency response, and clinical decision support across global waters.",
     image: rmaBack,
-    link: "/rma",
-    label: "Remote Medical Assistance service"
   },
   {
-    title: "M-Health",
-    icon: "fas fa-spa",
-    description: "Dedicated mental health support and counselling.",
+    title: "Mental Health Support",
+    short: "M-Health",
+    description:
+      "Confidential counselling and psychological support programs designed to help seafarers manage stress, isolation, and emotional challenges at sea.",
     image: mHealthBack,
-    link: "/mhealth",
-    label: "Mental Health support service"
   },
   {
-    title: "Wellness",
-    icon: "fas fa-heartbeat",
-    description: "Programs to promote physical and emotional wellbeing.",
+    title: "Wellness Programs",
+    short: "Wellness",
+    description:
+      "Preventive healthcare initiatives focusing on fitness, nutrition, fatigue management, and overall wellbeing to improve crew performance and morale.",
     image: wellnessBack,
-    link: "/wellness",
-    label: "Wellness programs service"
   },
   {
-    title: "Pharma",
-    icon: "fas fa-pills",
-    description: "Quality medications and medical supplies onboard.",
+    title: "Pharmaceutical Services",
+    short: "Pharma",
+    description:
+      "Supply and management of certified medicines and medical equipment onboard, aligned with international maritime medical regulations.",
     image: pharmaBack,
-    link: "pharma-services.html",
-    label: "Pharma medical supplies service"
   },
   {
-    title: "Shorecare",
-    icon: "fas fa-hospital",
-    description: "Seamless care coordination during shore leave.",
+    title: "Shore-Based Medical Care",
+    short: "Shorecare",
+    description:
+      "End-to-end coordination of diagnostics, specialist consultations, and treatment during port stays, ensuring continuity of medical care.",
     image: shorecareBack,
-    link: "shorecare-services.html",
-    label: "Shorecare coordination service"
   },
   {
-    title: "Training",
-    icon: "fas fa-user-graduate",
-    description: "Comprehensive medical training programs for crew.",
+    title: "Medical Training",
+    short: "Training",
+    description:
+      "Structured medical training programs enabling crew members to respond effectively to onboard emergencies and comply with safety standards.",
     image: trainingBack,
-    link: "training-services.html",
-    label: "Medical training programs service"
   },
 ];
 
 export default function Services() {
+  const itemsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    itemsRef.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    
-      <section
-        aria-label="Services Section"
-        className="services-section bg-[#0a70af] py-28 px-6 text-center mx-auto  shadow-lg mb-0 fade-in"
-      >
-         <div className="relative w-[900px] h-[100px] mx-auto mb-8">
-  {/* Skewed blue background */}
-  <div
-    className="absolute top-0 left-0 w-[102%] h-full bg-[#064267] z-[1] rounded-sm"
-    style={{ transform: 'skew(-20deg)' }}
-  ></div>
+    <section className="relative w-full pt-16 pb-28 px-6 bg-[#eef6fb] overflow-hidden">
 
-  {/* White content with skew */}
-  <div
-    className="relative z-[2] bg-white text-center py-[10px] rounded-md"
-    style={{ transform: 'skew(-20deg)' }}
-  >
-    <h3
-      className="text-transparent bg-gradient-to-r from-[#0a70af] to-[#1a1a3d] bg-clip-text font-bold text-3xl lg:text-5xl leading-snug"
+      {/* Directional light */}
+      <div className="pointer-events-none absolute -top-60 left-1/2 -translate-x-1/2
+        w-[1200px] h-[1200px]
+        bg-[radial-gradient(circle,rgba(4,109,151,0.15)_0%,transparent_60%)]" />
 
-      style={{
-        transform: 'skew(20deg)',
-        fontFamily: 'Times New Roman, serif',
-        margin: 0
-      }}
-    >
-      Our Services
-    </h3>
-  </div>
-  </div>
-  
-        <div
-          id="services-carousel"
-          role="list"
-          className="services-carousel flex flex-wrap justify-center gap-10 max-w-6xl mx-auto"
-        >
+      {/* Vertical focus column */}
+      <div className="pointer-events-none absolute inset-y-24 left-1/2 -translate-x-1/2
+        w-[640px] hidden lg:block
+        bg-gradient-to-b from-transparent via-[#046d97]/15 to-transparent" />
+
+      {/* CONTENT */}
+      <div className="relative max-w-7xl mx-auto">
+        {/* Heading */}
+        <div className="text-center mb-5">
+          <h2 className="text-[40px] font-bold tracking-tight
+            bg-gradient-to-r from-[#043f5c] to-[#046d97]
+            bg-clip-text text-transparent">
+            Our Services
+          </h2>
+          <p className="max-w-2xl mx-auto mt-4 text-gray-700 text-lg">
+            Integrated maritime healthcare solutions built to protect crew
+            health, safety, and operational continuity worldwide.
+          </p>
+        </div>
+
+        {/* Timeline line */}
+        <div className="hidden lg:block absolute left-1/2 top-[260px] bottom-32 w-[2px]
+          bg-gradient-to-b from-transparent via-[#046d97] to-transparent" />
+
+        {/* Timeline items */}
+        <div className="space-y-32">
           {services.map((service, index) => (
             <div
-              key={service.title}
-              tabIndex={index === 0 ? 0 : -1}
-              role="listitem"
-              aria-label={service.label}
-              className="service-card bg-white rounded-3xl p-8 shadow-md flex flex-col items-center w-56 cursor-pointer transition-transform duration-300 hover:scale-110"
+              key={index}
+              ref={(el) => (itemsRef.current[index] = el)}
+              className={`
+                relative flex flex-col lg:flex-row items-center gap-20
+                ${index % 2 !== 0 ? "lg:flex-row-reverse" : ""}
+                opacity-0 translate-y-14 transition-all duration-700 ease-out
+              `}
             >
-              <img
-                src={service.image}
-                alt={`${service.title} Logo`}
-                className="service-logo w-50 h-40 object-contain mb-0 mt-0"
-                draggable="false"
-              />
-              <h3 className="text-xl font-semibold text-[#0a70af] mb-2 flex items-center gap-2">
-                <i className={service.icon}></i> {service.title}
-              </h3>
-              <p className="text-sm text-gray-700 mb-4 flex-grow">
-                {service.description}
-              </p>
-              <Link to={service.link} className="btn-know-more bg-[#0a70af] text-white rounded-full px-8 py-2 font-semibold hover:bg-[#2a89c0] focus:outline-none focus:ring-blue-400 transition duration-300">Know more</Link>
+              {/* Background number */}
+              <div className="absolute -top-14 lg:top-1/2 lg:-translate-y-1/2
+                left-1/2 -translate-x-1/2
+                text-[110px] font-bold tracking-tight
+                text-[#046d97]/10">
+                {String(index + 1).padStart(2, "0")}
+              </div>
 
+              {/* Image */}
+              <div className="w-full lg:w-1/2 relative z-10">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  draggable="false"
+                  className="
+                    w-full h-[360px] object-cover rounded-3xl
+                    shadow-[0_30px_60px_rgba(0,0,0,0.18)]
+                    ring-2 ring-[#046d97]/10
+                  "
+                />
+              </div>
+
+              {/* Text */}
+              <div className="w-full lg:w-1/2 relative z-10">
+                <h3 className="text-3xl font-bold text-[#043f5c] mb-3">
+                  {service.title}
+                </h3>
+
+                <span className="inline-block mb-5 text-sm font-semibold
+                  tracking-wide text-[#046d97] uppercase">
+                  {service.short}
+                </span>
+
+                <p className="text-gray-700 text-[17px] leading-relaxed max-w-xl">
+                  {service.description}
+                </p>
+              </div>
+
+              {/* Separator */}
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2
+                w-28 h-[2px]
+                bg-gradient-to-r from-transparent via-[#046d97] to-transparent" />
             </div>
           ))}
         </div>
-      </section>
-    
+      </div>
+    </section>
   );
 }
