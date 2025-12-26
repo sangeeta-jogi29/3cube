@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import redSea from "../../assets/red-sea.png";
 import mark from "../../assets/mark.png";
 import zeaborn from "../../assets/Zeaborn.png";
@@ -20,63 +20,91 @@ const logos = [
 ];
 
 const ClientsSection = () => {
-  return (
-    <section className="relative w-full overflow-hidden py-20 
-      bg-gradient-to-b from-[#c7e2f5] to-[#87c3e6]">
+  const sliderRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(null);
 
-      {/* PREMIUM HEADING */}
-      <div className="text-center mb-14">
-        <h3 className="text-[36px] font-bold text-[#03344c] tracking-wide
-          bg-gradient-to-r from-[#03344c] to-[#046d97] bg-clip-text text-transparent">
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    let lastTime = performance.now();
+    const speed = 40; // px per second (smooth & stable)
+    let rafId;
+
+    const animate = (time) => {
+      const delta = time - lastTime;
+      lastTime = time;
+
+      slider.scrollLeft += (speed * delta) / 1000;
+
+      // seamless loop without jump
+      if (slider.scrollLeft >= slider.scrollWidth / 2) {
+        slider.scrollLeft -= slider.scrollWidth / 2;
+      }
+
+      rafId = requestAnimationFrame(animate);
+    };
+
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
+  return (
+    <section className="w-full py-16 bg-gradient-to-b from-[#c7e2f5] to-[#87c3e6]">
+
+      {/* Heading */}
+      <div className="text-center mb-10 px-4">
+        <h3 className="text-3xl font-bold text-[#03344c]">
           Our Valued Partners
         </h3>
-
-        <div className="mx-auto mt-3 w-24 h-[4px] 
-          bg-gradient-to-r from-[#046d97] to-[#76c7f2] rounded-full shadow"></div>
+        <div className="mx-auto mt-3 w-20 h-1 bg-[#046d97] rounded-full" />
       </div>
 
-      {/* HIGH-CONTRAST GLASS BOX */}
-      <div className="
-        max-w-6xl mx-auto backdrop-blur-xl bg-white border border-white/40
-        rounded-3xl shadow-xl py-10 px-4 overflow-hidden
-      ">
-        <div className="relative overflow-hidden">
-          <div className="flex gap-20 animate-scroll items-center">
-            {logos.concat(logos).map((src, i) => (
+      {/* Slider Card */}
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg px-4 py-8">
+        <div
+          ref={sliderRef}
+          className="
+            flex items-center gap-12
+            overflow-x-auto overflow-y-visible
+            py-6
+            cursor-grab select-none
+            scrollbar-hide
+            touch-pan-x
+          "
+        >
+          {[...logos, ...logos].map((src, i) => {
+            const isActive = activeIndex === i;
+
+            return (
               <img
                 key={i}
                 src={src}
                 alt="client-logo"
-                className="
-                  h-20 w-auto opacity-85 hover:opacity-100 transition-all
-                  hover:scale-110 hover:drop-shadow-[0_0_12px_#5dc0ff]
-                "
                 draggable="false"
+                onClick={() => setActiveIndex(i)}
+                className={`
+                  h-16 md:h-20 w-auto flex-shrink-0
+                  transition-transform duration-300
+                  origin-center cursor-pointer
+                  ${
+                    isActive
+                      ? "scale-110 drop-shadow-[0_10px_25px_rgba(4,109,151,0.35)]"
+                      : "opacity-80 hover:opacity-100 hover:scale-105"
+                  }
+                `}
               />
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* WAVE EFFECT */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="w-full h-20 fill-[#7ebede]"
-        >
-          <path d="M321.39,56.44c58-10.79,113.4-30.13,172-41.86C607.27-3.62,703.7-1.43,790.89,22.2c55.59,14.72,108.79,36.34,162.68,54.44,57.79,19.41,119.52,33.52,183.43,28.48V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-        </svg>
-      </div>
-
-      {/* ANIMATION */}
+      {/* Hide scrollbar */}
       <style>{`
-        .animate-scroll {
-          animation: scroll 28s linear infinite;
-        }
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
       `}</style>
     </section>
