@@ -70,7 +70,7 @@ const TestimonialsSection = () => {
         </h3>
 
         <div
-          className="relative w-full max-w-3xl mx-auto overflow-hidden"
+          className="relative w-full max-w-3xl mx-auto overflow-hidden rounded-3xl" // Added rounded-3xl here
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -80,7 +80,7 @@ const TestimonialsSection = () => {
           >
             {testimonials.map((testimonial, idx) => (
               <div key={idx} className="flex-none w-full px-4">
-                <div className="bg-white p-8 rounded-3xl shadow-lg flex flex-col items-center text-center gap-6 transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
+                <div className="bg-white p-8 rounded-3xl shadow-lg flex flex-col items-center text-center gap-6 transition-transform duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -95,20 +95,6 @@ const TestimonialsSection = () => {
               </div>
             ))}
           </div>
-
-          {/* Previous / Next Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-[#0a70af]/20 hover:bg-[#0a70af]/40 text-[#0a70af] rounded-full w-10 h-10 flex items-center justify-center"
-          >
-            &#8592;
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-[#0a70af]/20 hover:bg-[#0a70af]/40 text-[#0a70af] rounded-full w-10 h-10 flex items-center justify-center"
-          >
-            &#8594;
-          </button>
         </div>
 
         {/* Dots Navigation */}
