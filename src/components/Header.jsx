@@ -69,7 +69,8 @@ const Header = () => {
             <span className="px-4 py-2 rounded-md hover:bg-[#3f91c7] cursor-pointer transition-colors duration-300">
               Services
             </span>
-            <ul className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 hidden group-hover:block bg-white text-black rounded-md shadow-lg w-38 z-45">
+            <ul className="absolute top-full left-0 ml-4 mt-2 hidden group-hover:block bg-white text-black rounded-md shadow-lg w-38 z-45">
+
               <li>
                 <Link
                   to="/rma"
@@ -122,13 +123,14 @@ const Header = () => {
           </li>
 
           <li>
-            <Link
-              to="/technology"
-              className="px-4 py-2 rounded-md hover:bg-[#3f91c7] transition-colors duration-300"
-            >
-              Technology
-            </Link>
-          </li>
+  <Link
+    to="/achievements"
+    className="px-4 py-2 rounded-md hover:bg-[#3f91c7] transition-colors duration-300"
+  >
+    Achievements
+  </Link>
+</li>
+
           <li>
             <Link
               to="/contact"
@@ -220,13 +222,14 @@ const Header = () => {
             </li>
 
             <li>
-              <Link
-                to="/technology"
-                className="block px-4 py-2 rounded-md hover:bg-[#3f91c7] transition-colors duration-300"
-              >
-                Technology
-              </Link>
-            </li>
+  <Link
+    to="/achievements"
+    className="block px-4 py-2 rounded-md hover:bg-[#3f91c7] transition-colors duration-300"
+  >
+    Achievements
+  </Link>
+</li>
+
             <li>
               <Link
                 to="/contact"

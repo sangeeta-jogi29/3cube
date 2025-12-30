@@ -5,7 +5,7 @@ import About from './components/About/About';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
-
+import Achievements from './components/Achievements';
 
 import SlideshowSection from './components/landing_page/SlideshowSection';
 import Services from './components/landing_page/Services';
@@ -30,7 +30,8 @@ function HomePage() {
       <StatsSection />
       <ClientsSection />
       <Services />
-      {/* <ExpertSection /> */}
+      
+            {/* <ExpertSection /> */}
       <TestimonialsSection />
       
       <Footer />
@@ -47,6 +48,7 @@ function App() {
       <Route path="/wellness" element={<Wellness/>}/>
       <Route path="/mhealth" element={<MHealth />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/achievements" element={<Achievements />} />
     </Routes>
   );
 }
