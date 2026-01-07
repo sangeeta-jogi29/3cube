@@ -21,6 +21,9 @@ import MentalHealthChart from "./components/services/MentalHealthChart";
 import Wellness from './components/services/Wellness';
 import WellnessChart from './components/services/WellnessChart';
 import WellnessBarChart from './components/services/WellnessBarChart';
+import Pharma from './components/services/Pharma';
+import Shorecare from './components/services/Shorecare';
+import Training from './components/services/Training';
 
 function HomePage() {
   return (
@@ -47,6 +50,9 @@ function App() {
       <Route path="/rma" element={<RMASection />} />
       <Route path="/wellness" element={<Wellness/>}/>
       <Route path="/mhealth" element={<MHealth />} />
+      <Route path="/training" element={<Training />} />
+      <Route path="/shorecare" element={<Shorecare />} />
+      <Route path="/pharma" element={<Pharma />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/achievements" element={<Achievements />} />
     </Routes>

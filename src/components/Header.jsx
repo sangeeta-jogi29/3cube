@@ -97,7 +97,7 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/services/pharma"
+                  to="/pharma"
                   className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
                 >
                   <i className="fas fa-pills text-[#0a70af]"></i> Pharma
@@ -105,7 +105,7 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/services/shorecare"
+                  to="/shorecare"
                   className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
                 >
                   <i className="fas fa-hospital text-[#0a70af]"></i> Shorecare
@@ -113,7 +113,7 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/services/training"
+                  to="/training"
                   className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
                 >
                   <i className="fas fa-user-graduate text-[#0a70af]"></i> Training
